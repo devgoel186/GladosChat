@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
 
     socket.emit("message", {
       user: "admin",
-      text: `${user.name}, welcome to the room ${user.room}`,
+      text: `Hey ${user.name}. Welcome to The ${user.room} Room!`,
     });
 
     socket.broadcast.to(user.room).emit("message", {

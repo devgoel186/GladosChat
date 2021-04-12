@@ -6,6 +6,7 @@ import "./Chat.css";
 import "../InfoBar/InfoBar";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
+import Messages from "../Messages/Messages";
 
 let socket;
 let ENDPOINT = "http://localhost:5000/";
@@ -31,7 +32,7 @@ const Chat = ({ location }) => {
     socket.on("message", (message) => {
       setMessages((messages) => [...messages, message]);
     });
-  }, [messages]);
+  }, []);
 
   const sendMessage = (event) => {
     event.preventDefault();
@@ -40,12 +41,13 @@ const Chat = ({ location }) => {
     }
   };
 
-  console.log(message, messages);
+  // console.log(message, messages);
 
   return (
     <div className="outerContainer">
       <div className="container">
         <InfoBar room={room} />
+        <Messages messages={messages} name={name} />
         <Input
           setMessage={setMessage}
           sendMessage={sendMessage}
