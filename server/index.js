@@ -1,11 +1,10 @@
 const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
+const cors = require("cors");
 
 const router = require("./router");
 const { addUser, getUser, removeUser, getUsersInRoom } = require("./users");
-
-const cors = require("cors");
 
 const app = express();
 const server = http.createServer(app);
@@ -44,7 +43,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("sendMessage", (message, callback) => {
-    const user = getUser(socket.id);
+    const user = getUser({ id: socket.id });
+    // console.log(user);
     io.to(user.room).emit("message", { user: user.name, text: message });
     callback();
   });
