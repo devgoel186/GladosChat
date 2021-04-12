@@ -10,10 +10,14 @@ const Join = () => {
   return (
     <div className="joinOuterContainer">
       <div className="joinInnerContainer">
-        <h1 className="heading">Join</h1>
+        <h1 className="heading1" style={{ paddingBottom: "0px" }}>
+          Welcome to
+        </h1>
+        <h1 className="heading-major">Glados Chat</h1>
+        <h2 className="heading2">Join a room</h2>
         <div>
           <input
-            placeholder=""
+            placeholder="Enter your username here"
             className="joinInput"
             type="text"
             onChange={(event) => setName(event.target.value)}
@@ -21,7 +25,7 @@ const Join = () => {
         </div>
         <div>
           <input
-            placeholder=""
+            placeholder="Enter room name"
             className="joinInput mt-20"
             type="text"
             onChange={(event) => setRoom(event.target.value)}

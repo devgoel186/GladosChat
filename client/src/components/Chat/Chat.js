@@ -2,16 +2,19 @@ import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 import "./Chat.css";
-
-import "../InfoBar/InfoBar";
 import InfoBar from "../InfoBar/InfoBar";
 import Input from "../Input/Input";
 import Messages from "../Messages/Messages";
+import LoadingComponent from "../LoadingComponent/LoadingComponent";
 
 let socket;
-let ENDPOINT = "https://glados-chat-app-server.herokuapp.com/";
+let ENDPOINT =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:5000/"
+    : "https://glados-chat-app-server.herokuapp.com/";
 
 const Chat = ({ location }) => {
+  const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
@@ -26,6 +29,7 @@ const Chat = ({ location }) => {
     setRoom(room);
 
     socket.emit("join", { name, room }, () => {});
+    setLoading(false);
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
@@ -46,20 +50,19 @@ const Chat = ({ location }) => {
   return (
     <div className="outerContainer">
       <div className="container">
-        <InfoBar room={room} />
-        <Messages messages={messages} name={name} />
-        <Input
-          setMessage={setMessage}
-          sendMessage={sendMessage}
-          message={message}
-        />
-        {/* <input
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          onKeyPress={(event) =>
-            event.key === "Enter" ? sendMessages(event) : null
-          }
-        ></input> */}
+        {!loading ? (
+          <>
+            <InfoBar room={room} />
+            <Messages messages={messages} name={name} />
+            <Input
+              setMessage={setMessage}
+              sendMessage={sendMessage}
+              message={message}
+            />
+          </>
+        ) : (
+          <LoadingComponent />
+        )}
       </div>
     </div>
   );

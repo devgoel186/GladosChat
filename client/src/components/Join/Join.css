@@ -1,8 +1,17 @@
-html,
+html {
+  overflow: hidden;
+  width: 100%;
+}
+
 body {
+  height: 100%;
+  width: 100%;
   font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
+  position: fixed;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 #root {
@@ -17,22 +26,38 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
-  height: 100vh;
+  height: 100%;
   align-items: center;
   background-color: #1a1a1d;
 }
 
 .joinInnerContainer {
-  width: 20%;
+  width: 40%;
 }
 
 .joinInput {
-  border-radius: 0;
+  border-radius: 10px;
   padding: 15px 20px;
   width: 100%;
+  box-shadow: #fff 3px 3px 0;
 }
 
-.heading {
+.heading1 {
+  color: white;
+  font-size: 3em;
+  padding-bottom: 10px;
+}
+
+.heading-major {
+  color: white;
+  font-size: 5em;
+  padding-bottom: 10px;
+  background: url(../../assets/glados-text.jpg) no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heading2 {
   color: white;
   font-size: 2.5em;
   padding-bottom: 10px;
@@ -43,19 +68,26 @@ body {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #2979ff;
+  background: rgba(41, 121, 255, 0.7);
   padding: 20px;
+  font-weight: bold;
   border-radius: 5px;
   display: inline-block;
   border: none;
   width: 100%;
+  box-shadow: #0000ff 4px 4px 0;
+  transition: background 0.1s linear;
+}
+
+.button:hover {
+  background: rgba(41, 121, 255, 1);
 }
 
 .mt-20 {
   margin-top: 20px;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media all and (max-width: 768px) {
   .joinOuterContainer {
     height: 100%;
   }
