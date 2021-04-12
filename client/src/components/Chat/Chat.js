@@ -9,7 +9,7 @@ import Input from "../Input/Input";
 import Messages from "../Messages/Messages";
 
 let socket;
-let ENDPOINT = "http://localhost:5000/";
+let ENDPOINT = "https://glados-chat-app.herokuapp.com/";
 
 const Chat = ({ location }) => {
   const [name, setName] = useState("");
