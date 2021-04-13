@@ -9,13 +9,19 @@ body {
   font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
-  position: fixed;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
 }
 
 #root {
-  height: 100vh;
+  height: 100%;
+  position: fixed;
+  /* prevent overscroll bounce*/
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  /* iOS velocity scrolling */
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
 * {
@@ -45,13 +51,11 @@ body {
 .heading1 {
   color: white;
   font-size: 3em;
-  padding-bottom: 10px;
 }
 
 .heading-major {
   color: white;
-  font-size: 5em;
-  padding-bottom: 10px;
+  font-size: 4em;
   background: url(../../assets/glados-text.jpg) no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -59,8 +63,7 @@ body {
 
 .heading2 {
   color: white;
-  font-size: 2.5em;
-  padding-bottom: 10px;
+  font-size: 2em;
   border-bottom: 2px solid white;
 }
 
@@ -77,6 +80,7 @@ body {
   width: 100%;
   box-shadow: #0000ff 4px 4px 0;
   transition: background 0.1s linear;
+  margin-bottom: 20px;
 }
 
 .button:hover {

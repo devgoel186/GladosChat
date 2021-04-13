@@ -20,7 +20,7 @@ app.use(cors());
 app.use(router);
 
 io.on("connection", (socket) => {
-  console.log("Connected");
+  console.log("Connected", socket.id);
   socket.on("join", ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
     if (error) {
@@ -49,7 +49,6 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", (message, callback) => {
     const user = getUser({ id: socket.id });
-    // console.log(user);
     io.to(user.room).emit("message", { user: user.name, text: message });
     io.to(user.room).emit("roomData", {
       user: user.name,
@@ -68,7 +67,7 @@ io.on("connection", (socket) => {
       });
     }
 
-    console.log("Disconnected");
+    console.log("Disconnected", socket.id);
   });
 });
 
