@@ -15,6 +15,7 @@ let ENDPOINT =
 
 const Chat = ({ location }) => {
   const [loading, setLoading] = useState(true);
+  const [showTyping, setShowTyping] = useState("");
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
@@ -33,16 +34,29 @@ const Chat = ({ location }) => {
   }, [ENDPOINT, location.search]);
 
   useEffect(() => {
+    console.log("H");
     socket.on("message", (message) => {
       setMessages((messages) => [...messages, message]);
+      setShowTyping("");
+    });
+    socket.on("typing", (data) => {
+      data.name.length >= 13
+        ? setShowTyping(`${data.name.slice(0, 12)}... is typing`)
+        : setShowTyping(`${data.name} is typing`);
     });
   }, []);
 
   const sendMessage = (event) => {
     event.preventDefault();
     if (message) {
-      socket.emit("sendMessage", message, () => setMessage(""));
+      socket.emit("sendMessage", message, () => {
+        setMessage("");
+      });
     }
+  };
+
+  const sendTyping = () => {
+    socket.emit("typing");
   };
 
   // console.log(message, messages);
@@ -52,11 +66,13 @@ const Chat = ({ location }) => {
       <div className="container">
         {!loading ? (
           <>
-            <InfoBar room={room} />
+            <InfoBar room={room} showTyping={showTyping} />
             <Messages messages={messages} name={name} />
             <Input
               setMessage={setMessage}
               sendMessage={sendMessage}
+              sendTyping={sendTyping}
+              name={name}
               message={message}
             />
           </>
