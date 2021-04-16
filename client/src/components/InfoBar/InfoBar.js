@@ -8,7 +8,9 @@ import "./InfoBar.css";
 const InfoBar = ({ room, showTyping }) => (
   <div className="infoBar">
     <div className="leftInnerContainer">
-      <img className="onlineIcon" src={onlineIcon} alt="Online" />
+      <div className="onlineIcon">
+        <img src={onlineIcon} alt="Online" />
+      </div>
       <h3>{room}</h3>
       <p className="typingText">{showTyping}</p>
       {showTyping && (

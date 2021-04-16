@@ -3,7 +3,12 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1a1a1d;
+  /* background-color: #1a1a1d; */
+  background-image: linear-gradient(
+    94.3deg,
+    rgba(26, 33, 64, 1) 10.9%,
+    rgba(81, 84, 115, 1) 87.1%
+  );
 }
 
 .container {
@@ -13,7 +18,7 @@
   background: #ffffff;
   border-radius: 8px;
   height: 60%;
-  width: 35%;
+  width: 50%;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

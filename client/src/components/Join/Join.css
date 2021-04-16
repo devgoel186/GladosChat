@@ -34,7 +34,8 @@ body {
   text-align: center;
   height: 100%;
   align-items: center;
-  background-color: #1a1a1d;
+  /* background-color: #1a1a1d; */
+  background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }
 
 .joinInnerContainer {
@@ -42,10 +43,18 @@ body {
 }
 
 .joinInput {
-  border-radius: 10px;
+  border: 0;
+  /* display: block; */
+  text-align: center;
+  border-radius: 40px;
   padding: 15px 20px;
-  width: 100%;
+  width: 70%;
   box-shadow: #fff 3px 3px 0;
+  transition: 0.25s;
+}
+
+.joinInput:focus {
+  width: 100%;
 }
 
 .heading1 {
@@ -71,7 +80,7 @@ body {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: rgba(41, 121, 255, 0.7);
+  background: rgba(10, 70, 255, 0.8);
   padding: 20px;
   font-weight: bold;
   border-radius: 5px;
@@ -84,7 +93,7 @@ body {
 }
 
 .button:hover {
-  background: rgba(41, 121, 255, 1);
+  background: rgba(10, 70, 255, 1);
 }
 
 .mt-20 {

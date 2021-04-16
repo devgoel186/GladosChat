@@ -64,25 +64,27 @@ const Chat = ({ location }) => {
   // console.log(message, messages);
 
   return (
-    <div className="outerContainer">
-      <div className="container">
-        {!loading ? (
-          <>
-            <InfoBar room={room} showTyping={showTyping} />
-            <Messages messages={messages} name={name} />
-            <Input
-              setMessage={setMessage}
-              sendMessage={sendMessage}
-              sendTyping={sendTyping}
-              name={name}
-              message={message}
-            />
-          </>
-        ) : (
-          <LoadingComponent />
-        )}
-      </div>
-    </div>
+    <>
+      {!loading ? (
+        <div className="outerContainer">
+          <div className="container">
+            <>
+              <InfoBar room={room} showTyping={showTyping} />
+              <Messages messages={messages} name={name} />
+              <Input
+                setMessage={setMessage}
+                sendMessage={sendMessage}
+                sendTyping={sendTyping}
+                name={name}
+                message={message}
+              />
+            </>
+          </div>
+        </div>
+      ) : (
+        <LoadingComponent />
+      )}
+    </>
   );
 };
 

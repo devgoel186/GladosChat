@@ -1,19 +1,19 @@
 .cs-loader {
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   width: 100%;
-  background-color: #000;
+  background-image: linear-gradient(
+    94.3deg,
+    rgba(26, 33, 64, 1) 10.9%,
+    rgba(81, 84, 115, 1) 87.1%
+  );
 }
 
 .cs-loader-inner {
-  transform: translateY(-50%);
-  top: 50%;
-  position: relative;
   width: 100%;
   color: #fff;
-  padding: 0 100px;
   text-align: center;
 }
 
@@ -24,7 +24,6 @@
 }
 
 .loading-text {
-  text-transform: uppercase;
   text-shadow: 1px 1px 1px;
   font-weight: bold;
 }
