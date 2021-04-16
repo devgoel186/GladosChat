@@ -29,6 +29,8 @@ io.on("connection", (socket) => {
 
     socket.join(user.room);
 
+    socket.emit("loaded");
+
     socket.emit("message", {
       user: "admin",
       text: `Hey ${user.name}. Welcome to The ${user.room} Room!`,

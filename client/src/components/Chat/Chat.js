@@ -30,11 +30,13 @@ const Chat = ({ location }) => {
     setRoom(room);
 
     socket.emit("join", { name, room }, () => {});
-    setLoading(false);
-  }, [ENDPOINT, location.search]);
+  }, [location.search]);
 
   useEffect(() => {
     console.log("H");
+    socket.on("loaded", () => {
+      setLoading(false);
+    });
     socket.on("message", (message) => {
       setMessages((messages) => [...messages, message]);
       setShowTyping("");
